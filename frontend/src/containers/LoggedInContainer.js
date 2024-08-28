@@ -31,21 +31,19 @@ const LoggedInContainer = ({ children, curActiveScreen }) => {
 
   const firstUpdate = useRef(true);
 
-  const changeSong = useCallback(
-    (songSrc) => {
-      if (soundPlayed) {
-        soundPlayed.stop();
-      }
-      const sound = new Howl({
-        src: [songSrc],
-        html5: true,
-      });
-      setSoundPlayed(sound);
-      sound.play();
-      setIsPaused(false);
-    },
-    [soundPlayed, setSoundPlayed, setIsPaused]
-  );
+  const changeSong = (songSrc) => {
+    if (soundPlayed) {
+      soundPlayed.stop();
+    }
+    let sound = new Howl({
+      src: [songSrc],
+      html5: true,
+    });
+    setSoundPlayed(sound);
+    sound.play();
+    setIsPaused(false);
+  };
+
   useLayoutEffect(() => {
     if (firstUpdate.current) {
       firstUpdate.current = false;
@@ -56,8 +54,8 @@ const LoggedInContainer = ({ children, curActiveScreen }) => {
       return;
     }
     changeSong(currentSong.track);
-  }, [currentSong, changeSong]);
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentSong && currentSong.track]);
   const addSongToPlaylist = async (playlistId) => {
     const songId = currentSong._id;
     const payload = { playlistId, songId };
