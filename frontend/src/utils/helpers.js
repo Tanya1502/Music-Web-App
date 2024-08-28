@@ -1,4 +1,4 @@
-import { backendUrl } from "./config";
+import { backendUrl } from "../config";
 
 export const makeUnauthenticatedPOSTRequest = async (route, body) => {
   const response = await fetch(backendUrl + route, {
@@ -28,16 +28,13 @@ export const makeAuthenticatedPOSTRequest = async (route, body) => {
 
 export const makeAuthenticatedGETRequest = async (route) => {
   const token = getToken();
-  const response = await fetch(
-    backendUrl + route,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+  const response = await fetch(backendUrl + route, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
   const formattedResponse = await response.json();
   return formattedResponse;
 };
