@@ -26,12 +26,12 @@ const CreatePlaylistModal = ({ closeModal }) => {
   return (
     <div
       className="absolute bg-black w-screen h-screen bg-opacity-80 flex justify-center items-center"
-      style={{ zIndex: 100 }} // Added z-index for the modal
+      style={{ zIndex: 100 }}
       onClick={closeModal}
     >
       <div
-        className="bg-app-black w-1/3 rounded-md p-8"
-        onClick={(e) => e.stopPropagation()} // Prevents modal from closing when clicking inside
+        className="bg-app-black w-11/12 sm:w-2/3 md:w-1/2 lg:w-1/3 rounded-md p-8"
+        onClick={(e) => e.stopPropagation()}
       >
         <div className="text-white mb-5 font-semibold text-lg">
           Create Playlist
@@ -52,7 +52,7 @@ const CreatePlaylistModal = ({ closeModal }) => {
             setValue={setPlaylistThumbnail}
           />
           <div
-            className="bg-white w-1/3 rounded flex font-semibold justify-center items-center py-3 mt-4 cursor-pointer"
+            className="bg-white w-full sm:w-2/3 rounded flex font-semibold justify-center items-center py-3 mt-4 cursor-pointer"
             onClick={createPlaylist}
           >
             Create
