@@ -19,10 +19,7 @@ app.options("*", cors());
 app.use(express.json());
 
 mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGO_URL, {})
   .then((x) => {
     console.log("Connected to Mongo!");
   })
