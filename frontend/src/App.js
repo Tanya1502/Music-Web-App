@@ -16,6 +16,8 @@ function App() {
   const [currentSong, setCurrentSong] = useState(null);
   const [soundPlayed, setSoundPlayed] = useState(null);
   const [isPaused, setIsPaused] = useState(true);
+
+  // eslint-disable-next-line
   const [cookie, setCookie] = useCookies(["token"]);
 
   return (

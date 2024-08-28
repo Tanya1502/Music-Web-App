@@ -2,6 +2,7 @@ import { useContext } from "react";
 import songContext from "../../contexts/songContext";
 
 const SingleSongCard = ({ info, playSound }) => {
+  // eslint-disable-next-line
   const { currentSong, setCurrentSong } = useContext(songContext);
 
   return (

@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useCookies } from "react-cookie";
 import { makeUnauthenticatedPOSTRequest } from "../utils/helpers";
-import { BG_URL } from "../utils/contants";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/shared/Header";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -11,6 +9,7 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [isSignInForm, setIsSignInForm] = useState(true);
 
+  // eslint-disable-next-line
   const [cookie, setCookie] = useCookies(["token"]);
 
   const navigate = useNavigate();

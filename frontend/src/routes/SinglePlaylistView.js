@@ -17,6 +17,7 @@ const SinglePlaylistView = () => {
       console.log(response);
     };
     getData();
+    // eslint-disable-next-line
   }, []);
 
   return (

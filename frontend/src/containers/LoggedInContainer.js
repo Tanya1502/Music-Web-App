@@ -1,4 +1,10 @@
-import { useContext, useState, useLayoutEffect, useRef } from "react";
+import {
+  useContext,
+  useState,
+  useLayoutEffect,
+  useRef,
+  useCallback,
+} from "react";
 import { Icon } from "@iconify/react";
 import { Howl } from "howler";
 import IconText from "../components/shared/IconText";
@@ -15,6 +21,7 @@ const LoggedInContainer = ({ children, curActiveScreen }) => {
 
   const {
     currentSong,
+    // eslint-disable-next-line
     setCurrentSong,
     soundPlayed,
     setSoundPlayed,
@@ -24,6 +31,21 @@ const LoggedInContainer = ({ children, curActiveScreen }) => {
 
   const firstUpdate = useRef(true);
 
+  const changeSong = useCallback(
+    (songSrc) => {
+      if (soundPlayed) {
+        soundPlayed.stop();
+      }
+      const sound = new Howl({
+        src: [songSrc],
+        html5: true,
+      });
+      setSoundPlayed(sound);
+      sound.play();
+      setIsPaused(false);
+    },
+    [soundPlayed, setSoundPlayed, setIsPaused]
+  );
   useLayoutEffect(() => {
     if (firstUpdate.current) {
       firstUpdate.current = false;
@@ -34,7 +56,7 @@ const LoggedInContainer = ({ children, curActiveScreen }) => {
       return;
     }
     changeSong(currentSong.track);
-  }, [currentSong?.track]);
+  }, [currentSong, changeSong]);
 
   const addSongToPlaylist = async (playlistId) => {
     const songId = currentSong._id;
@@ -52,19 +74,6 @@ const LoggedInContainer = ({ children, curActiveScreen }) => {
     if (soundPlayed) {
       soundPlayed.play();
     }
-  };
-
-  const changeSong = (songSrc) => {
-    if (soundPlayed) {
-      soundPlayed.stop();
-    }
-    const sound = new Howl({
-      src: [songSrc],
-      html5: true,
-    });
-    setSoundPlayed(sound);
-    sound.play();
-    setIsPaused(false);
   };
 
   const pauseSound = () => {
