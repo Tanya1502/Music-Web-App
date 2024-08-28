@@ -1,12 +1,8 @@
 import { useState } from "react";
-import { Icon } from "@iconify/react";
 import CloudinaryUpload from "../components/shared/CloudinaryUpload";
-import IconText from "../components/shared/IconText";
 import TextInput from "../components/shared/TextInput";
-import TextWithHover from "../components/shared/TextWithHover";
 import { makeAuthenticatedPOSTRequest } from "../utils/helpers";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/shared/Header";
 import LoggedInContainer from "../containers/LoggedInContainer";
 
 const UploadSong = () => {
