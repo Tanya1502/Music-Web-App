@@ -1,29 +1,29 @@
-Music-Web-App
+#Music-Web-App
 
-Tech Stack
+- Tech Stack
 
-Client: React JS
-Server: Node JS, Express JS
-Database: Mongo DB
+      Client: React JS
+      Server: Node JS, Express JS
+      Database: Mongo DB
 
-Run Locally
+- Run Locally
 
-Clone the project
-git clone 
+      Clone the project
+      git clone 
 
-Go to the project directory
-cd Music-Web-App
+- Go to the project directory
+      cd Music-Web-App
 
-Install dependencies
-  cd backend
-  npm install
-  cd frontend
-  npm install
+- Install dependencies
+      cd backend
+      npm install
+      cd frontend
+      npm install
 
-Start the server
-  cd backend
-  node index.js
+- Start the server
+      cd backend
+      node index.js
   
-Start the Client
-  cd frontend
-  npm start
+- Start the Client
+      cd frontend
+      npm start
